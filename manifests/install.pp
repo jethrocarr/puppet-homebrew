@@ -33,7 +33,7 @@ class homebrew::install {
 
   exec { 'install-homebrew':
     cwd       => '/usr/local',
-    command   => "/usr/bin/su ${homebrew::user} -c '/bin/bash -o pipefail -c \"/usr/bin/curl -skSfL https://github.com/mxcl/homebrew/tarball/master | /usr/bin/tar xz -m --strip 1\"'",
+    command   => "/usr/bin/su ${homebrew::user} -c 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'",
     creates   => '/usr/local/bin/brew',
     logoutput => on_failure,
     timeout   => 0,
